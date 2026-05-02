@@ -1,0 +1,50 @@
+{
+  "name": "waveshield-panel-api",
+  "version": "2.0.0",
+  "description": "WaveShield Panel API for FiveM anti-cheat authentication",
+  "main": "dist/index.js",
+  "scripts": {
+    "heroku-prebuild": "npm install --save-dev",
+    "heroku-postbuild": "npm run build",
+    "build": "tsc && npm run copy-files",
+    "start": "cross-env NODE_ENV=production node dist/index.js",
+    "dev": "cross-env NODE_ENV=development ts-node-dev --respawn --transpile-only src/index.ts",
+    "lint": "eslint 'src/**/*.{js,ts}'",
+    "test": "jest",
+    "copy-files": "copyfiles -u 1 src/updater/* src/updaterBETA/* dist/",
+    "debug": "cross-env NODE_ENV=development node --inspect-brk -r ts-node/register src/index.ts"
+  },
+  "keywords": [
+    "waveshield",
+    "fivem",
+    "anti-cheat",
+    "authentication",
+    "api"
+  ],
+  "author": "ayznnn",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cross-env": "^7.0.3",
+    "discord-api-types": "^0.37.119",
+    "discord.js": "^14.18.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.10",
+    "@types/pg": "^8.11.6",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.5.3"
+  }
+}
